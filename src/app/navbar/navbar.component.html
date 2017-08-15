@@ -1,0 +1,9 @@
+<ul class="menu">
+  <li (click)="selectFeature(feature.Music)"
+      [ngClass]="{'active': selectedFeature == feature.Music}">Music</li>
+  <li (click)="selectFeature(feature.Video)"
+      [ngClass]="{'active': selectedFeature == feature.Video}">Video</li>
+  <li (click)="selectFeature(feature.Stats)"
+      [ngClass]="{'active': selectedFeature == feature.Stats}">Stats</li>
+  <li>Gear</li>
+</ul>

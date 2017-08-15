@@ -1,0 +1,35 @@
+$color-primary: white;
+$color-secondary: red;
+$color-gradient: darkred;
+
+.container-fluid{
+  background-color: black;
+  padding: 0px;
+}
+
+.menu{
+  color: $color-primary;
+
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  min-height: 400px;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  li{
+    border-bottom: 1px solid $color-secondary;
+    border-right: 1px solid $color-secondary;
+
+    list-style-type: none;
+    min-height: 100px;
+    padding-top: 20%;
+  }
+
+  .active{
+    color: $color-primary;
+    background: linear-gradient($color-gradient, $color-secondary);
+    border: none;
+  }
+}

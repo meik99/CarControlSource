@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {NavbarComponent} from './navbar/navbar.component';
+import {Feature} from "./navbar/feature";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public feature = Feature;
+  @ViewChild("navbar") navbar: NavbarComponent;
 }
