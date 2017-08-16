@@ -1,6 +1,6 @@
 $color-primary: white;
-$color-secondary: red;
-$color-gradient: darkred;
+$color-secondary: white;
+$color-gradient: lightgray;
 
 $height: 400px;
 $width: 800px;
@@ -8,7 +8,7 @@ $width: 800px;
 $music-height: 99px;
 
 .container-fluid{
-  background-color: black;
+  background: linear-gradient(black, red);
 }
 
 .menu{

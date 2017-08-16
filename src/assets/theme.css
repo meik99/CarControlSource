@@ -1,5 +1,5 @@
 .container-fluid {
-  background-color: black; }
+  background: linear-gradient(black, red); }
 
 .menu {
   color: white;
@@ -10,14 +10,14 @@
   font-size: 24px;
   font-weight: bold; }
   .menu li {
-    border-bottom: 1px solid red;
-    border-right: 1px solid red;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
     list-style-type: none;
     min-height: 100px;
     padding-top: 20%; }
   .menu .active {
     color: white;
-    background: linear-gradient(darkred, red);
+    background: linear-gradient(lightgray, white);
     border: none; }
 
 .music-list {
@@ -29,16 +29,16 @@
     min-height: 99px;
     max-height: 99px;
     font-weight: bold;
-    border-bottom: 1px solid red;
-    border-right: 1px solid red;
-    border-left: 1px solid red;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
     list-style-type: none;
     width: 199px;
     line-height: 99px; }
 
 .button {
   width: 100px;
-  border: 1px solid red;
+  border: 1px solid white;
   margin-left: 40px; }
 
 /*# sourceMappingURL=theme.css.map */
