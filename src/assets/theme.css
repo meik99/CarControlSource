@@ -1,6 +1,5 @@
 .container-fluid {
-  background-color: black;
-  padding: 0px; }
+  background-color: black; }
 
 .menu {
   color: white;
@@ -20,5 +19,26 @@
     color: white;
     background: linear-gradient(darkred, red);
     border: none; }
+
+.music-list {
+  padding: 0px; }
+  .music-list li {
+    float: left;
+    color: white;
+    text-align: center;
+    min-height: 99px;
+    max-height: 99px;
+    font-weight: bold;
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
+    border-left: 1px solid red;
+    list-style-type: none;
+    width: 199px;
+    line-height: 99px; }
+
+.button {
+  width: 100px;
+  border: 1px solid red;
+  margin-left: 40px; }
 
 /*# sourceMappingURL=theme.css.map */

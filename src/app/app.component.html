@@ -1,11 +1,11 @@
 <div class="container-fluid"
-     style="width: 800px; height: 400px; border: 1px solid black">
+     style="width: 800px; height: 400px;">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3" style="padding-right: 0px;">
       <app-navbar #navbar></app-navbar>
     </div>
-    <div class="col-9">
-      <div *ngIf="navbar.selectedFeature == feature.Music">
+    <div class="col-9" style="border: 1px solid greenyellow">
+      <div *ngIf="navbar.selectedFeature == feature.Music" >
         <app-music></app-music>
       </div>
     </div>

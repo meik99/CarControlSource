@@ -2,9 +2,13 @@ $color-primary: white;
 $color-secondary: red;
 $color-gradient: darkred;
 
+$height: 400px;
+$width: 800px;
+
+$music-height: 99px;
+
 .container-fluid{
   background-color: black;
-  padding: 0px;
 }
 
 .menu{
@@ -17,6 +21,7 @@ $color-gradient: darkred;
 
   font-size: 24px;
   font-weight: bold;
+
 
   li{
     border-bottom: 1px solid $color-secondary;
@@ -33,3 +38,34 @@ $color-gradient: darkred;
     border: none;
   }
 }
+
+.music-list{
+
+  padding: 0px;
+
+  li{
+    float: left;
+    color: $color-primary;
+
+    text-align: center;
+    min-height: $music-height;
+    max-height: $music-height;
+
+    font-weight: bold;
+    border-bottom: 1px solid $color-secondary;
+    border-right: 1px solid $color-secondary;
+    border-left: 1px solid $color-secondary;
+
+    list-style-type: none;
+    width: 199px;
+
+    line-height: $music-height;
+  }
+}
+
+.button {
+  width: 100px;
+  border: 1px solid $color-secondary;
+  margin-left: 40px;
+}
+
