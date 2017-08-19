@@ -1,71 +1,16 @@
-$color-primary: white;
-$color-secondary: white;
-$color-gradient: lightgray;
 
-$height: 400px;
-$width: 800px;
-
-$music-height: 99px;
-
-.container-fluid{
-  background: linear-gradient(black, red);
+.navbar-list{
+  padding: 0px;
+  margin-left: -15px;
 }
 
-.menu{
-  color: $color-primary;
-
-  padding: 0px;
-  margin: 0px;
+.navbar-item{
+  //min-height: 90px;
   text-align: center;
-  min-height: 400px;
-
-  font-size: 24px;
-  font-weight: bold;
-
-
-  li{
-    border-bottom: 1px solid $color-secondary;
-    border-right: 1px solid $color-secondary;
-
-    list-style-type: none;
-    min-height: 100px;
-    padding-top: 20%;
-  }
-
-  .active{
-    color: $color-primary;
-    background: linear-gradient($color-gradient, $color-secondary);
-    border: none;
-  }
+  vertical-align: middle;
+  line-height: 74px;
 }
 
-.music-list{
-
-  padding: 0px;
-
-  li{
-    float: left;
-    color: $color-primary;
-
-    text-align: center;
-    min-height: $music-height;
-    max-height: $music-height;
-
-    font-weight: bold;
-    border-bottom: 1px solid $color-secondary;
-    border-right: 1px solid $color-secondary;
-    border-left: 1px solid $color-secondary;
-
-    list-style-type: none;
-    width: 199px;
-
-    line-height: $music-height;
-  }
+.container{
+  border: 1px solid blue;
 }
-
-.button {
-  width: 100px;
-  border: 1px solid $color-secondary;
-  margin-left: 40px;
-}
-

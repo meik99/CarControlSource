@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-music',
   templateUrl: './music.component.html',
@@ -11,13 +9,13 @@ export class MusicComponent implements OnInit {
 
   constructor() { }
 
-  files = [
-    "This house is not for sale",
-    "Can't go home",
-    "More than you know"
-  ];
+  currentSong: String = "This house is not for sale";
+  playing: boolean = true;
 
   ngOnInit() {
   }
 
+  changeState(){
+    this.playing = !this.playing;
+  }
 }
