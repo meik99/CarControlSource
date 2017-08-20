@@ -9,7 +9,18 @@ module.exports = function (app) {
 
     player.volume(50);
 
+    var next = false;
+
+
+    player.on("stop", function () {
+        next = true;
+    });
+    player.on("start", function () {
+        next = false;
+    });
+
     app.post("/play", function (req, res) {
+        next = false;
         if (req.body.song) {
             player.openFile(config.musicPath + req.body.song);
         }
@@ -46,8 +57,7 @@ module.exports = function (app) {
     });
 
     app.get("/music/status", function (req, res) {
+        player.status.next = next;
         res.send(player.status);
     });
-
-
 };

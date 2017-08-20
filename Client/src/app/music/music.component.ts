@@ -22,8 +22,9 @@ export class MusicComponent implements OnInit {
     currentPage: number = 0;
     pages: number = 0;
     songsPerPage: number = SONGS_PER_PAGE;
-    volume: number;
-    time: number;
+    volume: number = 0;
+    time: number = 0;
+    nextSong = false;
 
     math = Math;
 
@@ -48,7 +49,7 @@ export class MusicComponent implements OnInit {
             this.http.get("http://localhost:8080/music/status").subscribe(data => {
                this.updateStatus(data);
             });
-        }, 1000);
+        }, 10);
     }
 
     changeState() {
@@ -65,13 +66,18 @@ export class MusicComponent implements OnInit {
             .subscribe(data => {
                 this.playing = true;
                 this.currentSong = song;
-                this.updateStatus(data);
             });
-
     }
 
     updateStatus(data){
         // this.playing = data["playing"];
+        if(this.nextSong == false && data["next"] && data["next"] == true){
+            this.nextSong = true;
+            this.next();
+        }
+        if(data["next"] && data["next"] == false){
+            this.nextSong = false;
+        }
         this.volume = data["volume"];
         this.time = data["position"];
 
@@ -85,7 +91,6 @@ export class MusicComponent implements OnInit {
                 }, this);
             }
         }
-        console.log(data);
     }
 
     volumeUp(){
