@@ -18,7 +18,7 @@ export class MusicComponent implements OnInit {
 
     currentSong: Song = null;
     songs: Song[] = [];
-    playing: boolean = true;
+    playing: boolean = false;
     currentPage: number = 0;
     pages: number = 0;
     songsPerPage: number = SONGS_PER_PAGE;
@@ -48,7 +48,7 @@ export class MusicComponent implements OnInit {
             this.http.get("http://localhost:8080/music/status").subscribe(data => {
                this.updateStatus(data);
             });
-        }, 100);
+        }, 1000);
     }
 
     changeState() {
@@ -71,10 +71,7 @@ export class MusicComponent implements OnInit {
     }
 
     updateStatus(data){
-        if(this.playing == true && data["playing"] == false && data["position"] > 10){
-            this.next();
-        }
-        this.playing = data["playing"];
+        // this.playing = data["playing"];
         this.volume = data["volume"];
         this.time = data["position"];
 
@@ -83,6 +80,7 @@ export class MusicComponent implements OnInit {
                 this.songs.forEach(function (item) {
                     if(data["filename"].indexOf(item.fullname) > -1){
                         this.currentSong = item;
+                        this.playing = true;
                     }
                 }, this);
             }

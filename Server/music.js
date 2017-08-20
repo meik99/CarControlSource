@@ -7,7 +7,7 @@ module.exports = function (app) {
     var config = require("./musicConfig.json");
     var player = new mplayer();
 
-    player.volume(100);
+    player.volume(50);
 
     app.post("/play", function (req, res) {
         if (req.body.song) {
