@@ -5,9 +5,24 @@
 .navbar-item {
   text-align: center;
   vertical-align: middle;
-  line-height: 74px; }
+  line-height: 96px; }
 
-.container {
-  border: 1px solid lightgray; }
+html {
+  height: 100%; }
+  html body {
+    height: 100%; }
+    html body app-root {
+      height: 100%; }
+      html body app-root .container-fluid {
+        height: 100%; }
+        html body app-root .container-fluid .first-row {
+          height: 100%; }
+          html body app-root .container-fluid .first-row .navbar-col {
+            height: 100%; }
+          html body app-root .container-fluid .first-row .content-col {
+            height: 100%; }
+
+.pre-scrollable {
+  max-height: 96%; }
 
 /*# sourceMappingURL=theme.css.map */

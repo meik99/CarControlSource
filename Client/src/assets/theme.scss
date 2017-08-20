@@ -1,4 +1,3 @@
-
 .navbar-list{
   padding: 0px;
   margin-left: -15px;
@@ -8,9 +7,31 @@
   //min-height: 90px;
   text-align: center;
   vertical-align: middle;
-  line-height: 74px;
+  line-height: 96px;
 }
 
-.container{
-  border: 1px solid lightgray;
+html{
+  height: 100%;
+  body{
+    height: 100%;
+    app-root{
+      height: 100%;
+      .container-fluid{
+        height: 100%;
+        .first-row{
+          height: 100%;
+          .navbar-col{
+            height: 100%;
+          }
+          .content-col{
+            height:100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pre-scrollable{
+  max-height: 96%;
 }

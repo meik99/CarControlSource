@@ -101,7 +101,7 @@ export class MusicComponent implements OnInit {
     }
 
     volumeDown(){
-        if(this.volume > 0){
+        if(this.volume > 5){
             this.volume -= VOLUME_STEP;
             this.http.post("http://localhost:8080/volume", {volume: this.volume}).subscribe();
         }
