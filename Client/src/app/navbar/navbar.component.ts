@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
     public FEATURE = Feature;
 
-    private _selectedFeature: Feature = Feature.Music;
+    private _selectedFeature: Feature = Feature.Video;
 
     get selectedFeature(): Feature {
         return this._selectedFeature;

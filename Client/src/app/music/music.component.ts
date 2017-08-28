@@ -7,6 +7,7 @@ import {IntervalObservable} from "rxjs/observable/IntervalObservable";
 const MAX_NAME_LENGTH = 36;
 const SONGS_PER_PAGE = 4;
 const VOLUME_STEP = 5;
+const PLAYER_URL = "http://localhost:8080/music";
 
 @Component({
     selector: 'app-music',
@@ -34,7 +35,7 @@ export class MusicComponent implements OnInit {
     onBack = new EventEmitter();
 
     ngOnInit() {
-        this.http.get<String[]>("http://localhost:8080/titles").subscribe(
+        this.http.get<String[]>(PLAYER_URL + "/titles").subscribe(
             data => {
                 const result: Song[] = [];
 
@@ -50,7 +51,7 @@ export class MusicComponent implements OnInit {
 
                 IntervalObservable.create(10)
                     .subscribe(() => {
-                        this.http.get("http://localhost:8080/music/status").subscribe(data => {
+                        this.http.get(PLAYER_URL + "/status").subscribe(data => {
                             this.updateStatus(data);
                         });
                     });
@@ -66,14 +67,14 @@ export class MusicComponent implements OnInit {
     changeState() {
         this.playing = !this.playing;
         if (this.playing === false) {
-            this.http.get("http://localhost:8080/pause").subscribe();
+            this.http.get(PLAYER_URL + "/pause").subscribe();
         }else{
-            this.http.get("http://localhost:8080/resume").subscribe();
+            this.http.get(PLAYER_URL + "/resume").subscribe();
         }
     }
 
     playSong(song: Song) {
-        this.http.post("http://localhost:8080/play", {song: song.fullname})
+        this.http.post(PLAYER_URL + "/play", {song: song.fullname})
             .subscribe(data => {
                 this.playing = true;
                 this.currentSong = song;
@@ -92,8 +93,8 @@ export class MusicComponent implements OnInit {
         this.volume = data["volume"];
         this.time = data["position"];
 
-        if (this.currentSong == null){
-            if (data["filename"]){
+        if (this.currentSong == null) {
+            if (data["filename"]) {
                 this.songs.forEach(function (item) {
                     if (data["filename"].indexOf(item.fullname) > -1){
                         this.currentSong = item;
@@ -107,14 +108,14 @@ export class MusicComponent implements OnInit {
     volumeUp(){
         if (this.volume < 100){
             this.volume += VOLUME_STEP;
-            this.http.post("http://localhost:8080/volume", {volume: this.volume}).subscribe();
+            this.http.post(PLAYER_URL + "/volume", {volume: this.volume}).subscribe();
         }
     }
 
     volumeDown(){
         if (this.volume > 5){
             this.volume -= VOLUME_STEP;
-            this.http.post("http://localhost:8080/volume", {volume: this.volume}).subscribe();
+            this.http.post( PLAYER_URL + "/volume", {volume: this.volume}).subscribe();
         }
     }
 
