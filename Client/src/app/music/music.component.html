@@ -1,4 +1,4 @@
-<div class="row justify-content-center" style="height: 100%">
+<div class="row justify-content-center" style="height: 82%">
   <div class="col-6">
     <div class="row justify-content-center">
       <div class="col-3">
@@ -34,9 +34,6 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        Time: {{math.floor(time / 60.0) | number:'1.0-0'}}:{{math.floor(time % 60) | number:'2.0-0'}}
-      </div>
-      <div class="col-auto">
         Volume: {{volume}}%
       </div>
     </div>
@@ -49,4 +46,9 @@
           [ngClass]="{'active': currentSong === song}">{{song.displayname}}</li>
     </ul>
   </div>
+</div>
+<div class="row">
+  <button class="btn btn-block btn-primary" (click)="onBack.emit()">
+    <i class="fa fa-arrow-left fa-3x"></i>
+  </button>
 </div>

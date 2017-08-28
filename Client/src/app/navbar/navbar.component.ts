@@ -1,28 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Feature} from "./feature";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor() { }
+    constructor() {
+    }
 
-  feature = Feature;
+    public FEATURE = Feature;
 
-  private _selectedFeature: Feature = Feature.Music;
+    private _selectedFeature: Feature = Feature.Music;
 
-  get selectedFeature(): Feature {
-    return this._selectedFeature;
-  }
+    get selectedFeature(): Feature {
+        return this._selectedFeature;
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 
-  selectFeature(feature: Feature) {
-    this._selectedFeature = feature;
-  }
+    selectFeature(feature: Feature) {
+        this._selectedFeature = feature;
+    }
+
+    onBack() {
+        this.selectFeature(Feature.None);
+    }
 }
 

@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Song} from "./Song";
+import {TimeInterval} from "rxjs/Rx";
+import {IntervalObservable} from "rxjs/observable/IntervalObservable";
 
-const MAX_NAME_LENGTH: number = 36;
-const SONGS_PER_PAGE: number = 4;
-const VOLUME_STEP: number = 5;
+const MAX_NAME_LENGTH = 36;
+const SONGS_PER_PAGE = 4;
+const VOLUME_STEP = 5;
 
 @Component({
     selector: 'app-music',
@@ -18,20 +20,23 @@ export class MusicComponent implements OnInit {
 
     currentSong: Song = null;
     songs: Song[] = [];
-    playing: boolean = false;
-    currentPage: number = 0;
-    pages: number = 0;
+    playing = false;
+    currentPage = 0;
+    pages = 0;
     songsPerPage: number = SONGS_PER_PAGE;
-    volume: number = 0;
-    time: number = 0;
+    volume = 0;
+    time = 0;
     nextSong = false;
 
     math = Math;
 
+    @Output()
+    onBack = new EventEmitter();
+
     ngOnInit() {
         this.http.get<String[]>("http://localhost:8080/titles").subscribe(
             data => {
-                let result: Song[] = [];
+                const result: Song[] = [];
 
                 for (let i = 0; i < data.length; i++) {
                     result[i] = new Song();
@@ -42,19 +47,25 @@ export class MusicComponent implements OnInit {
 
                 this.songs = result;
                 this.pages = result.length / SONGS_PER_PAGE;
+
+                IntervalObservable.create(10)
+                    .subscribe(() => {
+                        this.http.get("http://localhost:8080/music/status").subscribe(data => {
+                            this.updateStatus(data);
+                        });
+                    });
+            },
+            error => {
+                console.log(error);
             }
         );
-
-        setInterval(() => {
-            this.http.get("http://localhost:8080/music/status").subscribe(data => {
-               this.updateStatus(data);
-            });
-        }, 10);
     }
+
+
 
     changeState() {
         this.playing = !this.playing;
-        if(this.playing == false){
+        if (this.playing === false) {
             this.http.get("http://localhost:8080/pause").subscribe();
         }else{
             this.http.get("http://localhost:8080/resume").subscribe();
@@ -71,20 +82,20 @@ export class MusicComponent implements OnInit {
 
     updateStatus(data){
         // this.playing = data["playing"];
-        if(this.nextSong == false && data["next"] && data["next"] == true){
+        if (this.nextSong === false && data["next"] && data["next"] === true){
             this.nextSong = true;
             this.next();
         }
-        if(data["next"] && data["next"] == false){
+        if (data["next"] && data["next"] === false) {
             this.nextSong = false;
         }
         this.volume = data["volume"];
         this.time = data["position"];
 
-        if(this.currentSong == null){
-            if(data["filename"]){
+        if (this.currentSong == null){
+            if (data["filename"]){
                 this.songs.forEach(function (item) {
-                    if(data["filename"].indexOf(item.fullname) > -1){
+                    if (data["filename"].indexOf(item.fullname) > -1){
                         this.currentSong = item;
                         this.playing = true;
                     }
@@ -94,23 +105,23 @@ export class MusicComponent implements OnInit {
     }
 
     volumeUp(){
-        if(this.volume < 100){
+        if (this.volume < 100){
             this.volume += VOLUME_STEP;
             this.http.post("http://localhost:8080/volume", {volume: this.volume}).subscribe();
         }
     }
 
     volumeDown(){
-        if(this.volume > 5){
+        if (this.volume > 5){
             this.volume -= VOLUME_STEP;
             this.http.post("http://localhost:8080/volume", {volume: this.volume}).subscribe();
         }
     }
 
     next(){
-        var nextIndex: number = this.songs.indexOf(this.currentSong) + 1;
+        let nextIndex: number = this.songs.indexOf(this.currentSong) + 1;
 
-        if(nextIndex >= this.songs.length){
+        if (nextIndex >= this.songs.length){
             nextIndex = 0;
         }
 
@@ -118,10 +129,10 @@ export class MusicComponent implements OnInit {
     }
 
     previous(){
-        var nextIndex: number = this.songs.indexOf(this.currentSong) - 1;
+        let nextIndex: number = this.songs.indexOf(this.currentSong) - 1;
 
-        if(nextIndex < 0){
-            nextIndex = this.songs.length -1;
+        if (nextIndex < 0){
+            nextIndex = this.songs.length - 1;
         }
 
         this.playSong(this.songs[nextIndex]);

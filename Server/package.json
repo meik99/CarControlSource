@@ -13,6 +13,6 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "fs": "0.0.1-security",
-    "mplayer": "^2.1.0",
+    "mplayer": "^2.1.0"
   }
 }
