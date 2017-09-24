@@ -1,0 +1,11 @@
+.main-menu{
+    margin-left: 5%;
+    margin-top: 5%;
+    padding: 2%;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.btn-light{
+    background-color: rgba(240, 240, 240, 0.5);
+    border: none;
+}
