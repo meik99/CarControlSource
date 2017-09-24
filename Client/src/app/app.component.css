@@ -1,0 +1,11 @@
+.container-fluid{
+    background: url("../assets/pics/Unix-Wallpapers-5.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 800px;
+    height: 480px;
+    min-width: 800px;
+    min-height: 480px;
+    max-width: 800px;
+    max-height: 480px;
+}

@@ -1,6 +1,4 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavbarComponent} from './navbar/navbar.component';
-import {Feature} from "./navbar/feature";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +7,4 @@ import {Feature} from "./navbar/feature";
 })
 export class AppComponent {
   title = 'app';
-  public feature = Feature;
-  @ViewChild("navbar") navbar: NavbarComponent;
 }
