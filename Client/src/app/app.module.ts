@@ -2,20 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent} from "./navbar/navbar.component";
-import { MusicComponent } from './music/music.component';
 import {HttpClientModule} from "@angular/common/http";
-import { VideoComponent } from './video/video.component';
+
+import {RouterModule, Routes} from "@angular/router";
+import {MainMenuComponent} from "./main-menu/main-menu.component";
+
+const appRoutes: Routes = [
+  {path: "", component: MainMenuComponent, pathMatch: "full"},
+  {path: "**", component: MainMenuComponent}
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    MusicComponent,
-    VideoComponent
+    MainMenuComponent
   ],
   imports: [
-    BrowserModule,
+      RouterModule.forRoot(
+        appRoutes,
+           {enableTracing: true}
+      ),
+      BrowserModule,
       HttpClientModule
   ],
   providers: [],
