@@ -2,8 +2,7 @@ var express = require("express");
 var app = express();
 var cors = require("cors");
 var bodyParser = require("body-parser");
-var music = require("./music");
-var video = require("./video");
+var io = require("./io");
 
 
 app.use(cors());
@@ -14,8 +13,9 @@ app.get("/", function (req, res) {
 
 });
 
-music(app);
-video(app);
+
+io(app);
+///entertainment/<component>/<method>
 
 app.listen(8080, function () {
     console.log("Listening on 8080");

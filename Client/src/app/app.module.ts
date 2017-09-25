@@ -6,6 +6,8 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {RouterModule, Routes} from "@angular/router";
 import {MainMenuComponent} from "./main-menu/main-menu.component";
+import { MusicComponent } from './music/music.component';
+import {MusicService} from "./services/music.service";
 
 const appRoutes: Routes = [
   {path: "", component: MainMenuComponent, pathMatch: "full"},
@@ -16,7 +18,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    MusicComponent
   ],
   imports: [
       RouterModule.forRoot(
@@ -26,7 +29,7 @@ const appRoutes: Routes = [
       BrowserModule,
       HttpClientModule
   ],
-  providers: [],
+  providers: [MusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
